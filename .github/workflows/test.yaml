@@ -16,5 +16,5 @@ jobs:
           toEmail: namgyaltobden@gmail.com
           subject: test
           mail: hi there 
-          # cc: 
+          cc: tobdenfsbeats 
           # emailFile: 
