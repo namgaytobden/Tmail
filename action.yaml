@@ -57,10 +57,10 @@ runs:
       shell: bash
       run: bash action.sh
       env: 
-        FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
-        FROM_NAME: ${{ secrets.FROM_NAME }}
-        SMTP_URL: ${{ secrets.SMTP_URL }}
-        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        FROM_EMAIL: ${{ inputs.fromEmail }}
+        FROM_NAME: ${{ inputs.fromName }}
+        SMTP_URL: ${{ inputs.smtpUrl }}
+        SMTP_PASS: ${{ inputs.smtpPass }}
         TO_EMAIL: ${{ inputs.toEmail }}
         SUBJECT: ${{ inputs.subject }}
         MAIL: ${{ inputs.mail }}

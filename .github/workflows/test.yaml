@@ -9,6 +9,10 @@ jobs:
       - name: SendEmail 
         uses: namgaytobden/MailEase@master
         with:
+          fromEmail: ${{ secrets.FROM_EMAIL }}
+          fromName: ${{ secrets.FROM_NAME }}
+          smtpUrl: ${{ secrets.SMTP_URL }}
+          smtpPass: ${{ secrets.SMTP_PASS }}
           toEmail: namgyaltobden@gmail.com
           subject: test
           mail: hi there 
