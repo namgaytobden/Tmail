@@ -7,7 +7,7 @@ jobs:
     name: Scan the webapplication
     steps:
       - name: SendEmail 
-        uses: namgaytobden/MailEase@main
+        uses: namgaytobden/MailEase@master
         with:
           toEmail: namgyaltobden@gmail.com
           subject: test
