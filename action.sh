@@ -15,6 +15,8 @@ EMAIL_FILE="${EMAIL_FILE}"
 MUTTRC_FILE="~/.muttrc"
 
 # Create or overwrite the .muttrc file with the new settings
+ls 
+pwd
 touch $MUTTRC_FILE
 cat <<EOL > "$MUTTRC_FILE"
 set from = "$FROM_EMAIL"
