@@ -1,0 +1,16 @@
+name: PEN TEST
+on:
+  push:
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: SendEmail 
+        uses: namgaytobden/MailEase@main
+        with:
+          toEmail: namgyaltobden@gmail.com
+          subject: test
+          mail: hi there 
+          # cc: 
+          # emailFile: 
