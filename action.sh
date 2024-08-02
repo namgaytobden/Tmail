@@ -12,11 +12,9 @@ CC="${CC}"
 EMAIL_FILE="${EMAIL_FILE}"
 
 # Define the path to the .muttrc file
-MUTTRC_FILE="~/.muttrc"
+MUTTRC_FILE="$HOME/.muttrc"
 
 # Create or overwrite the .muttrc file with the new settings
-ls 
-pwd
 touch $MUTTRC_FILE
 cat <<EOL > "$MUTTRC_FILE"
 set from = "$FROM_EMAIL"
