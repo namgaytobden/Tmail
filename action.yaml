@@ -1,0 +1,74 @@
+name: k8s manifestation 
+description: Manipulate and apply k8s manifest
+author: namgaytobden
+branding:
+  icon: terminal
+  color: white
+
+inputs:
+
+  fromEmail:
+    description: Email From 
+    required: true
+  
+  fromName:
+    description: Name of the Email sender 
+    required: true
+
+  smtpUrl:
+    description: Smtp Url smtp://email@smtp.gmail.com:587/"
+    required: true
+
+  smtpPass:
+    description: smtp password
+    required: true
+  
+  toEmail:
+    description: Email To
+    required: true
+  
+  subject:
+    description: Subject of the Email
+    required: false
+
+  mail:
+    description: Actual Email 
+    required: false
+  
+  cc:
+    description: Additional CC 
+    required: false
+  
+  emailFile: 
+    description: Email file path
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+
+    - name: Install mutt
+      shell: bash
+      run: sudo apt-get install mutt
+
+    - name: Run script
+      shell: bash
+      run: bash action.sh
+      env: 
+        FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        FROM_NAME: ${{ secrets.FROM_NAME }}
+        SMTP_URL: ${{ secrets.SMTP_URL }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        TO_EMAIL: ${{ inputs.toEmail }}
+        SUBJECT: ${{ inputs.subject }}
+        MAIL: ${{ inputs.mail }}
+        CC: ${{ inputs.cc }}
+        EMAIL_FILE: ${{ inputs.emailFile }}
+
+# set from = "tobdenfsbeats@gmail.com"
+# set realname = "BTN Gaming Store"
+# set smtp_url = "smtp://tobdenfsbeats@smtp.gmail.com:587/"
+# set smtp_pass = "ftcy yjlv ytnd hayz"
+
