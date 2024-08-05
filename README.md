@@ -1,14 +1,14 @@
-# MailEase: Sending Emails with Mutt
+# Tmail: Terminal Mail
 
 ## Overview of Mutt
 
 Mutt is a powerful and highly configurable command-line email client for Unix-like systems. It supports various email protocols such as IMAP, POP3, and SMTP. Mutt is often used for reading and sending emails directly from the terminal, making it a popular choice for users who prefer command-line interfaces or need to automate email sending in scripts.
 
-## Using Mutt to Send Emails
+## Using Tmail to Send Emails
 
-To send an email with MailEase Action, you need to generate password from you google account and add other Environments as github secrets. Also you need to specify various options such as the subject, recipients, body and attachments.
+To send an email with Tmail Action, you need to generate password from you google account and add other Environments as github secrets. Also you need to specify various options such as the subject, recipients, body and attachments.
 
-**Note**: MailEase currently only supports sending emails via Gmail's SMTP server. To use Gmail for sending emails, you need to generate an **App Password from your Google account.** 
+**Note**: Tmail currently only supports sending emails via Gmail's SMTP server. To use Gmail for sending emails, you need to generate an **App Password from your Google account.** 
 
 ### Generating an App Password
 
@@ -23,7 +23,7 @@ For detailed instructions, you can also refer to this [Gmail SMTP password gener
 
 ## Script Overview
 
-This script demonstrates how an email is sent by using MailEase Action:
+This script demonstrates how an email is sent by using Tmail Action:
 
 1. **Fetching Configuration Details**: The script retrieves email configuration details from environment variables.
 2. **Configuring `.muttrc`**: It sets up the `.muttrc` configuration file with the provided email settings, including sender details and SMTP server configuration.
@@ -46,13 +46,13 @@ This script demonstrates how an email is sent by using MailEase Action:
 - `EMAIL_FILE`: The path to a file containing the email body (optional).   `/path/to/email_body.txt`
 - `ATTACHMENT`: The path to a file to be attached to the email (optional). `/path/to/attachment.txt`
 
-## Using MailEase Action
+## Using Tmail Action
 
 **Set Environment Variables**: Ensure the required environment variables are set. For security, sensitive information like `FROM_EMAIL`, `FROM_NAME`, `SMTP_URL`, and `SMTP_PASS` should be added as secrets in you Github repository.
 
 ```yaml
-- name: MailEase
-  uses: namgaytobden/MailEase@master
+- name: Tmail 
+  uses: namgaytobden/Tmail @master
   with:
     fromEmail: ${{ secrets.FROM_EMAIL }}
     fromName: ${{ secrets.FROM_NAME }}
