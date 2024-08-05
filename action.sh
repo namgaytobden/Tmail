@@ -10,6 +10,7 @@ SUBJECT="${SUBJECT}"
 MAIL="${MAIL}"
 CC="${CC}"
 EMAIL_FILE="${EMAIL_FILE}"
+ATTACHMENT="${ATTACHMENT}"
 
 # Define the path to the .muttrc file
 MUTTRC_FILE="$HOME/.muttrc"
@@ -27,13 +28,17 @@ echo ".muttrc file has been updated successfully."
 
 source $MUTTRC_FILE
 
-
 # Compose the mutt command
 mutt_command="mutt -s '$SUBJECT'"
 
 # Add CC if provided
 if [ -n "$CC" ]; then
   mutt_command="$mutt_command -c '$CC'"
+fi
+
+# Add attachment if provided
+if [ -n "$ATTACHMENT" ]; then
+  mutt_command="$mutt_command -a '$ATTACHMENT'"
 fi
 
 # Add the body or file
