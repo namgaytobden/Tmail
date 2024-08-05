@@ -10,7 +10,7 @@ SUBJECT="${SUBJECT}"
 MAIL="${MAIL}"
 CC="${CC}"
 EMAIL_FILE="${EMAIL_FILE}"
-ATTACHMENT="./zap_report/report_html.html "
+ATTACHMENT="zap_report/report_html.html"
 
 # Define the path to the .muttrc file
 MUTTRC_FILE="$HOME/.muttrc"
