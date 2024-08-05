@@ -38,7 +38,7 @@ This script demonstrates how an email is sent by using Tmail Action:
 | `FROM_EMAIL`  | The email address from which the email will be sent.  | `yourmail@gmail.com`                     |
 | `FROM_NAME`   | The name that will appear as the sender.              | `Sender Name`                            |
 | `SMTP_URL`    | The URL of the SMTP server used to send the email.    | `smtp://<youremail>@smtp.gmail.com:587/` |
-| `SMTP_PASS`   | The password for the SMTP server.                     | `Password Generated from your google account` |
+| `SMTP_PASS`   | The password for the SMTP server.                     | `Password_Generated_from_google_account` |
 
 ### User Input
 | Variable       | Description                                              | Example                        |
