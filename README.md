@@ -1,4 +1,4 @@
-# Tmail: Terminal Mail
+# Terminal Mail
 
 ## Overview of Mutt
 
