@@ -10,12 +10,12 @@ SUBJECT="${SUBJECT}"
 MAIL="${MAIL}"
 CC="${CC}"
 EMAIL_FILE="${EMAIL_FILE}"
-ATTACHMENT="${ATTACHMENT}"
+ATTACHMENT="./zap_report/report_html.html "
 
 # Define the path to the .muttrc file
 MUTTRC_FILE="$HOME/.muttrc"
 
-# Create or overwrite the .muttrc file with the new settings
+# Create or overwrite the .muttrc file with the nereport_html.html w settings
 touch $MUTTRC_FILE
 cat <<EOL > "$MUTTRC_FILE"
 set from = "$FROM_EMAIL"
@@ -33,13 +33,9 @@ mutt_command="mutt -s '$SUBJECT'"
 
 # Add CC if provided
 if [ -n "$CC" ]; then
-  mutt_command="$mutt_command -c '$CC'"
+  mutt_command="$mutt_command -c '$CC' -a '$ATTACHMENT'"
 fi
 
-# Add attachment if provided
-if [ -n "$ATTACHMENT" ]; then
-  mutt_command="$mutt_command -a '$ATTACHMENT'"
-fi
 
 # Add the body or file
 if [ -n "$MAIL" ]; then
