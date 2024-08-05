@@ -52,7 +52,7 @@ This script demonstrates how an email is sent by using Tmail Action:
 
 ```yaml
 - name: Tmail 
-  uses: namgaytobden/Tmail @master
+  uses: namgaytobden/Tmail@master
   with:
     fromEmail: ${{ secrets.FROM_EMAIL }}
     fromName: ${{ secrets.FROM_NAME }}
