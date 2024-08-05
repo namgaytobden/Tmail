@@ -32,19 +32,23 @@ This script demonstrates how an email is sent by using Tmail Action:
 
 ## Environment Variables
 
-**Github Secrets:**
-- `FROM_EMAIL`: The email address from which the email will be sent.    `yourmail@gmail.com`
-- `FROM_NAME`: The name that will appear as the sender.                 `Sender Name`
-- `SMTP_URL`: The URL of the SMTP server used to send the email.        `smtp://<youremail>@smtp.gmail.com:587/`
-- `SMTP_PASS`: The password for the SMTP server.                        `Password Generated from your google account`
+### Github Secrets
+| Variable      | Description                                           | Example                                  |
+|---------------|-------------------------------------------------------|------------------------------------------|
+| `FROM_EMAIL`  | The email address from which the email will be sent.  | `yourmail@gmail.com`                     |
+| `FROM_NAME`   | The name that will appear as the sender.              | `Sender Name`                            |
+| `SMTP_URL`    | The URL of the SMTP server used to send the email.    | `smtp://<youremail>@smtp.gmail.com:587/` |
+| `SMTP_PASS`   | The password for the SMTP server.                     | `Password Generated from your google account` |
 
-**User Input:**
-- `TO_EMAIL`: The email address of the recipient.                          `recipient@example.com`
-- `SUBJECT`: The subject of the email.                                     `Subject Subject`
-- `MAIL`: The body content of the email (optional).                        `Email Body.`
-- `CC`: The email address for CC (optional).                               `cc@example.com`
-- `EMAIL_FILE`: The path to a file containing the email body (optional).   `/path/to/email_body.txt`
-- `ATTACHMENT`: The path to a file to be attached to the email (optional). `/path/to/attachment.txt`
+### User Input
+| Variable       | Description                                              | Example                        |
+|----------------|----------------------------------------------------------|--------------------------------|
+| `TO_EMAIL`     | The email address of the recipient.                      | `recipient@example.com`        |
+| `SUBJECT`      | The subject of the email.                                | `Subject Subject`              |
+| `MAIL`         | The body content of the email (optional).                | `Email Body.`                  |
+| `CC`           | The email address for CC (optional).                     | `cc@example.com`               |
+| `EMAIL_FILE`   | The path to a file containing the email body (optional). | `/path/to/email_body.txt`      |
+| `ATTACHMENT`   | The path to a file to be attached to the email (optional). | `/path/to/attachment.txt`      |
 
 ## Using Tmail Action
 
