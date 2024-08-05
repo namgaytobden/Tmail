@@ -29,11 +29,11 @@ echo ".muttrc file has been updated successfully."
 source $MUTTRC_FILE
 
 # Compose the mutt command
-mutt_command="mutt -s '$SUBJECT'"
+mutt_command="mutt -s '$SUBJECT' -a '$ATTACHMENT'"
 
 # Add CC if provided
 if [ -n "$CC" ]; then
-  mutt_command="$mutt_command -c '$CC' -a '$ATTACHMENT'"
+  mutt_command="$mutt_command -c '$CC'"
 fi
 
 
