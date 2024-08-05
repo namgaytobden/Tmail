@@ -29,7 +29,7 @@ echo ".muttrc file has been updated successfully."
 source $MUTTRC_FILE
 
 # Compose the mutt command
-mutt_command="mutt -s '$SUBJECT' -a '$ATTACHMENT'"
+mutt_command="mutt -e "set content_type=text/html" -s $SUBJECT -i $ATTACHMENT"
 
 # Add CC if provided
 if [ -n "$CC" ]; then
