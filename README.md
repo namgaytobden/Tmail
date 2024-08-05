@@ -1,4 +1,4 @@
-# MailEase ~ Sending Emails with Mutt
+# MailEase: Sending Emails with Mutt
 
 ## Overview of Mutt
 
