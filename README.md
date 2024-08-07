@@ -58,11 +58,13 @@ This script demonstrates how an email is sent by using Tmail Action:
 - name: Tmail 
   uses: namgaytobden/Tmail@master
   with:
+    #Github Secrets 
     fromEmail: ${{ secrets.FROM_EMAIL }}
     fromName: ${{ secrets.FROM_NAME }}
     smtpUrl: ${{ secrets.SMTP_URL }}
     smtpPass: ${{ secrets.SMTP_PASS }}
-
+  
+    #User Input
     toEmail: 'email@gmail.com'
     subject: 'Your subject here'
     attachment: 'path/to/your/file'
