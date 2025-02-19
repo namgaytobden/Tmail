@@ -16,25 +16,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Load Label-User Mapping
+      - name: Load Label-User Mapping & Assign Users
         run: |
           set -o allexport
           source .github/label-users.env
           set +o allexport
-          
+
           LABEL_NAME="${{ github.event.label.name }}"
           ISSUE_NUMBER="${{ github.event.issue.number }}"
           REPO="${{ github.repository }}"
           GITHUB_TOKEN="${{ secrets.GH_TOKEN }}"
 
-          ASSIGNEE=$(eval echo \$$LABEL_NAME)
+          ASSIGNEES=$(eval echo \$$LABEL_NAME)
 
-          if [ -n "$ASSIGNEE" ]; then
-            echo "Assigning $ASSIGNEE to issue #$ISSUE_NUMBER"
+          if [ -n "$ASSIGNEES" ]; then
+            echo "Assigning $ASSIGNEES to issue #$ISSUE_NUMBER"
+
+            ASSIGNEES_JSON=$(echo $ASSIGNEES | jq -R 'split(",")')
+
             curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
                  -H "Accept: application/vnd.github.v3+json" \
                  https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/assignees \
-                 -d "{\"assignees\":[\"$ASSIGNEE\"]}"
+                 -d "{\"assignees\": $ASSIGNEES_JSON}"
           else
             echo "No matching assignee found for label: $LABEL_NAME"
           fi
