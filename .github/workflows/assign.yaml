@@ -1,0 +1,40 @@
+name: Auto Assign Users on Specific Labels
+
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  assign_users:
+    if: |
+      github.event.label.name == 'development' ||
+      github.event.label.name == 'bug' ||
+      github.event.label.name == 'feature'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Load Label-User Mapping
+        run: |
+          set -o allexport
+          source .github/label-users.env
+          set +o allexport
+          
+          LABEL_NAME="${{ github.event.label.name }}"
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          REPO="${{ github.repository }}"
+          GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+
+          ASSIGNEE=$(eval echo \$$LABEL_NAME)
+
+          if [ -n "$ASSIGNEE" ]; then
+            echo "Assigning $ASSIGNEE to issue #$ISSUE_NUMBER"
+            curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
+                 -H "Accept: application/vnd.github.v3+json" \
+                 https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/assignees \
+                 -d "{\"assignees\":[\"$ASSIGNEE\"]}"
+          else
+            echo "No matching assignee found for label: $LABEL_NAME"
+          fi
