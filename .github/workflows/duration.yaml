@@ -1,0 +1,35 @@
+name: Track Work Duration with Specific Labels
+
+on:
+  issues:
+    types:
+      - labeled
+      - unlabeled
+
+jobs:
+  track_work_duration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Capture Work Start/Stop Time
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          LABEL_NAME="${{ github.event.label.name }}"
+          REPO="${{ github.repository }}"
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+
+          if [ "$LABEL_NAME" == "work-started" ]; then
+            MESSAGE="🟢 **Work started on this issue at $TIMESTAMP.**"
+          elif [ "$LABEL_NAME" == "work-stopped" ]; then
+            MESSAGE="🔴 **Work stopped on this issue at $TIMESTAMP.**"
+          else
+            echo "Label $LABEL_NAME is not tracked. Exiting."
+            exit 0
+          fi
+
+          echo "Adding comment: $MESSAGE"
+          curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/comments \
+               -d "{\"body\": \"$MESSAGE\"}"
