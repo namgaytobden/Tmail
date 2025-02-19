@@ -1,4 +1,4 @@
-name: Auto Assign Users on Specific Labels
+name: Assign Users with Labels
 
 on:
   issues:

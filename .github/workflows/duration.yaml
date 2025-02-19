@@ -1,4 +1,4 @@
-name: Track Work Duration with Specific Labels
+name: Track Work Duration with Labels
 
 on:
   issues:
