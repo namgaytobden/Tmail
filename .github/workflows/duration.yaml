@@ -20,9 +20,9 @@ jobs:
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
 
           if [ "$LABEL_NAME" == "work-started" ]; then
-            MESSAGE="🟢 **Work started on this issue at $TIMESTAMP.**"
+            MESSAGE="🟢 **Work started: $TIMESTAMP.**"
           elif [ "$LABEL_NAME" == "work-stopped" ]; then
-            MESSAGE="🔴 **Work stopped on this issue at $TIMESTAMP.**"
+            MESSAGE="🔴 **Work stopped: $TIMESTAMP.**"
           else
             echo "Label $LABEL_NAME is not tracked. Exiting."
             exit 0
