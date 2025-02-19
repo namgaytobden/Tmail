@@ -4,10 +4,12 @@ on:
   issues:
     types:
       - labeled
-      - unlabeled
 
 jobs:
   track_work_duration:
+    if: |
+      github.event.label.name == 'work-stopped' ||
+      github.event.label.name == 'work-started'  
     runs-on: ubuntu-latest
     steps:
       - name: Capture Work Start/Stop Time
