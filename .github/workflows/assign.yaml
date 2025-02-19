@@ -25,7 +25,7 @@ jobs:
           LABEL_NAME="${{ github.event.label.name }}"
           ISSUE_NUMBER="${{ github.event.issue.number }}"
           REPO="${{ github.repository }}"
-          GH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN="${{ secrets.GH_TOKEN }}"
 
           ASSIGNEE=$(eval echo \$$LABEL_NAME)
 
