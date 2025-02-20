@@ -11,7 +11,7 @@ jobs:
       github.event.label.name == 'development' ||
       github.event.label.name == 'bug' ||
       github.event.label.name == 'feature' ||
-      github.event.label.name == 'L1'
+      startsWith(github.event.label.name, 'L1')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
