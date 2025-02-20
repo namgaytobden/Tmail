@@ -17,7 +17,7 @@ jobs:
           ISSUE_NUMBER="${{ github.event.issue.number }}"
           EVENT_TYPE="${{ github.event.action }}"
           REPO="${{ github.repository }}"
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")          
+          TIMESTAMP=$(TZ=Asia/Thimphu date +"%Y-%m-%d %H:%M:%S BTT")         
           
           if [ "$EVENT_TYPE" == "opened" ]; then
             MESSAGE="🟢 **Work started: $TIMESTAMP.**"
