@@ -19,16 +19,12 @@ jobs:
 
       - name: Load Label-User Mapping & Assign Users
         run: |
-          set -o allexport
-          source .github/label-users.env
-          set +o allexport
-
           LABEL_NAME="${{ github.event.label.name }}"
           ISSUE_NUMBER="${{ github.event.issue.number }}"
           REPO="${{ github.repository }}"
           GITHUB_TOKEN="${{ secrets.GH_TOKEN }}"
 
-          ASSIGNEES=$(eval echo \$$LABEL_NAME)
+          ASSIGNEES=$(jq -r --arg label "$LABEL_NAME" '.[$label] // empty' .github/label-users.json)
 
           if [ -n "$ASSIGNEES" ]; then
             echo "Assigning $ASSIGNEES to issue #$ISSUE_NUMBER"
