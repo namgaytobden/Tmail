@@ -3,13 +3,11 @@ name: Track Work Duration with Labels
 on:
   issues:
     types:
-      - labeled
+      - opened
+      - closed
 
 jobs:
   track_work_duration:
-    if: |
-      github.event.label.name == 'work-stopped' ||
-      github.event.label.name == 'work-started'  
     runs-on: ubuntu-latest
     steps:
       - name: Capture Work Start/Stop Time
@@ -17,16 +15,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           ISSUE_NUMBER="${{ github.event.issue.number }}"
-          LABEL_NAME="${{ github.event.label.name }}"
+          EVENT_TYPE="${{ github.event.action }}"
           REPO="${{ github.repository }}"
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-
-          if [ "$LABEL_NAME" == "work-started" ]; then
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")          
+          
+          if [ "$EVENT_TYPE" == "opened" ]; then
             MESSAGE="🟢 **Work started: $TIMESTAMP.**"
-          elif [ "$LABEL_NAME" == "work-stopped" ]; then
+          elif [ "$EVENT_TYPE" == "closed" ]; then
             MESSAGE="🔴 **Work stopped: $TIMESTAMP.**"
           else
-            echo "Label $LABEL_NAME is not tracked. Exiting."
             exit 0
           fi
 
