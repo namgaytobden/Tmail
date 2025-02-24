@@ -29,9 +29,9 @@ jobs:
           if [[ "$LABEL_NAME" == "dto_work_start" || "$LABEL_NAME" == "dto_work_end" ]]; then
             TIMESTAMP=$(TZ=Asia/Thimphu date +"%Y-%m-%d %H:%M:%S BTT")
 
-            if [ "$EVENT_TYPE" == "opened" ]; then
+            if [ "$LABEL_NAME" == "dto_work_start" ]; then
               MESSAGE="🟢 **Work started: $TIMESTAMP.**"
-            elif [ "$EVENT_TYPE" == "closed" ]; then
+            elif [ "$LABEL_NAME" == "dto_work_start" ]; then
               MESSAGE="🔴 **Work stopped: $TIMESTAMP.**"
             else
               exit 0
