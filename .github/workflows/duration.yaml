@@ -20,9 +20,9 @@ jobs:
           TIMESTAMP=$(TZ=Asia/Thimphu date +"%Y-%m-%d %H:%M:%S BTT")         
           
           if [ "$EVENT_TYPE" == "opened" ]; then
-            MESSAGE="🟢 **Work started: $TIMESTAMP.**"
+            MESSAGE="🟢 **Work started:** \`$TIMESTAMP\`"
           elif [ "$EVENT_TYPE" == "closed" ]; then
-            MESSAGE="🔴 **Work stopped: $TIMESTAMP.**"
+            MESSAGE="🔴 **Work stopped:** \`$TIMESTAMP\`"
           else
             exit 0
           fi
