@@ -31,7 +31,7 @@ jobs:
 
             if [ "$LABEL_NAME" == "dto_work_start" ]; then
               MESSAGE="🟢 **Work started: $TIMESTAMP.**"
-            elif [ "$LABEL_NAME" == "dto_work_start" ]; then
+            elif [ "$LABEL_NAME" == "dto_work_end" ]; then
               MESSAGE="🔴 **Work stopped: $TIMESTAMP.**"
             else
               exit 0
