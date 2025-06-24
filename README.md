@@ -69,8 +69,6 @@ This script demonstrates how an email is sent by using Tmail Action:
     subject: 'Your subject here'
     attachment: 'path/to/your/file'
 
-
-#TEST
     cc: 'email2@gmail.com'
     mail: |
         Your email body 
